@@ -1,0 +1,6 @@
+{
+    "run_list": [ "recipe[magento::default]", "recipe[magento::motd]", "recipe[magento::hostsfile]" ],
+    "devbox": {
+        "main_user": "vagrant"
+    }
+}

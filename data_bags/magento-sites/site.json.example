@@ -1,0 +1,12 @@
+{
+    "id": "demo",
+    "project": "demo",
+    "server_name": "www.demo.local",
+    "server_aliases": ["backend.demo.local"],
+    "databases": [ "demo_dev" ],
+    "motd": [
+        "demo",
+        "====",
+        "Please enter your update/install instructions here."
+    ]
+}
