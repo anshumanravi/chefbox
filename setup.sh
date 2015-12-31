@@ -21,7 +21,7 @@ else
     cd /etc/chefbox && git pull
 fi
 
-if [ ! -f /opt/chefdk/bin/chef ] || [ "$(/opt/chefdk/bin/chef --version)" != "Chef Development Kit Version: 0.3.5" ] ; then
+if [ ! -f /opt/chefdk/bin/chef ] || [ "$(/opt/chefdk/bin/chef --version)" != "Chef Development Kit Version: 0.4.0" ] ; then
     echo
     echo "Installing ChefDK (includes Berkshelf)..."
     echo "-----------------------------------------"
