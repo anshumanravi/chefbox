@@ -9,4 +9,4 @@ echo
 echo "Running Chef..."
 echo "---------------"
 echo
-cd /etc/chef-devbox && chef-solo -c solo.rb -j solo.json || { echo >&2 "Chef provsioning failed"; exit 1; }
+cd /etc/chefbox && chef-solo -c solo.rb -j solo.json || { echo >&2 "Chef provsioning failed"; exit 1; }
