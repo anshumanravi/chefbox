@@ -12,6 +12,15 @@ echo
 cd /etc/chefbox && chef-solo -c solo.rb -j solo.json || { echo >&2 "Chef provsioning failed"; exit 1; }
 
 
+echo
+echo "Rsyncing guest to host(/var/www to /vagrant/htdocs)"
+echo "--------------------------------------"
+echo
+if [ ! -d /vagrant/htdocs ]; then mkdir /vagrant/htdocs; fi
+rsync -r /var/www/ /vagrant/htdocs/ || { echo >&2 "Can not synced /vagrant/htdocs to /var/www , Please vagrant ssh and do (rsync -r /var/www/ /vagrant/htdocs/)  it manually "; exit 0; }
+
+
+
 echo ""
 echo "What's next?"
 echo "------------"

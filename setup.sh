@@ -39,10 +39,3 @@ if [ -d ~/.berkshelf ] ; then rm -rf ~/.berkshelf; fi
 if [ -d /etc/chefbox/cookbooks ] ; then rm -rf /etc/chefbox/cookbooks; fi
 cd /etc/chefbox && berks vendor /etc/chefbox/cookbooks || { echo >&2 "Installing berkshelf dependencies failed"; exit 1; }
 
-echo
-echo "Rsyncing guest to host(/var/www to /vagrant/htdocs)"
-echo "--------------------------------------"
-echo
-if [ ! -d /vagrant/htdocs ]; then mkdir /vagrant/htdocs; fi
-rsync -r /var/www/ /vagrant/htdocs/ || { echo >&2 "Can not synced /vagrant/htdocs to /var/www "; exit 1; }
-
