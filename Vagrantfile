@@ -15,4 +15,5 @@ Vagrant.configure("2") do |config|
         # v.auto_nat_dns_proxy = false
     end
     config.vm.provision "shell", path: "setup.sh"
+    config.vm.provision "shell", path: "provision.sh"
 end

@@ -40,21 +40,9 @@ if [ -d /etc/chefbox/cookbooks ] ; then rm -rf /etc/chefbox/cookbooks; fi
 cd /etc/chefbox && berks vendor /etc/chefbox/cookbooks || { echo >&2 "Installing berkshelf dependencies failed"; exit 1; }
 
 echo
-echo "Running Chef..."
-echo "---------------"
+echo "Rsyncing guest to host(/var/www to /vagrant/htdocs)"
+echo "--------------------------------------"
 echo
-/etc/chefbox/provision.sh || { echo >&2 "Chef provisioning failed"; exit 1; }
+if [ ! -d /vagrant/htdocs ]; then mkdir /vagrant/htdocs; fi
+rsync -r /var/www/ /vagrant/htdocs/ || { echo >&2 "Can not synced /vagrant/htdocs to /var/www "; exit 1; }
 
-echo ""
-echo "What's next?"
-echo "------------"
-echo ""
-echo "(0. Log in to this machine if you're not already here: 'vagrant ssh' or use Putty to connect to 127.0.0.1, port 2222)"
-echo "1. Go to /etc/chefbox/data_bags/magento-sites/ and create one or more project json files. Look at 'site.json.example' for an example"
-echo "2. Run provisioning again:"
-echo "    sudo /etc/chefbox/provision.sh"
-echo "3. Copy the contents of /var/www/hosts.hosts and paste it into you host system's host file (Windows: 'C:\\Windows\\System32\\drivers\\etc\\hosts')"
-echo "4. Follow the instructions on the login screen (log out and log in again) for more information on how to install/update a build package"
-echo ""
-echo "Have a great day!"
-echo ""
